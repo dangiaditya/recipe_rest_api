@@ -27,7 +27,20 @@ class ModelTests(TestCase):
             email=email,
             password=password
         )
-        self.assertEqual(email.lower(), user.email)
+        email_name, domain_part = email.strip().rsplit('@', 1)
+        test_email = email_name + '@' + domain_part.lower()
+        self.assertEqual(test_email, user.email)
+
+        email = "TEst@Test.com"
+        password = "password123"
+
+        user = get_user_model().objects.create_user(
+            email=email,
+            password=password
+        )
+        email_name, domain_part = email.strip().rsplit('@', 1)
+        test_email = email_name + '@' + domain_part.lower()
+        self.assertEqual(test_email, user.email)
 
     def test_new_user_invalid_email(self):
         """Test Creating user with no email raises error"""
