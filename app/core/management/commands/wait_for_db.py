@@ -14,7 +14,12 @@ class Command(BaseCommand):
         db_conn = None
         while not db_conn:
             try:
+                self.stdout.write('Trying DB connection...')
                 db_conn = connections['default']
+                msg = 'Connection complete waiting for other '\
+                      'dependencies to start...'
+                self.stdout.write(msg)
+                time.sleep(5)
             except OperationalError:
                 self.stdout.write('Database unavailable, waiting 1 second...')
                 time.sleep(1)
