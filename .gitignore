@@ -239,7 +239,7 @@ pythonenv*
 # Spyder project settings
 .spyderproject
 .spyproject
-test.py
+
 # Rope project settings
 .ropeproject
 
@@ -259,5 +259,9 @@ dmypy.json
 
 # profiling data
 .prof
+
+# local test files
+test.py
+commands.txt
 
 # End of https://www.toptal.com/developers/gitignore/api/python,pycharm+all,macos
